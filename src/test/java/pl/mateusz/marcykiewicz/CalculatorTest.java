@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import pl.mateusz.marcykiewicz.testingintroduction.Calculator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CalculatorTest {
 
@@ -41,5 +42,44 @@ public class CalculatorTest {
         assertEquals(5, calculator.add(6, -1));
     }
 
+    @Test
+    @DisplayName("Test add method for first argument being max value and second greater than 0")
+    void testAddForFirstParameterBeingMaxIntegerValueAndSecondGreaterThanZero() {
+
+        int a = Integer.MAX_VALUE;
+        int b = 1;
+
+        assertThrows(ArithmeticException.class, () -> calculator.add(a, b));
+    }
+
+    @Test
+    @DisplayName("Test add method for first argument being greater than 0 and second being integer max value")
+    void testAddForFirstParameterBeingGreaterThanZeroAndSecondIntegerMaxValue() {
+
+        int a = 1;
+        int b = Integer.MAX_VALUE;
+
+        assertThrows(ArithmeticException.class, () -> calculator.add(a, b));
+    }
+
+    @Test
+    @DisplayName("Test add method for first argument being smaller than 0 and second being integer min value")
+    void testAddForFirstParameterBeingSmallerThanZeroAndSecondIntegerMinValue() {
+
+        int a = -1;
+        int b = Integer.MIN_VALUE;
+
+        assertThrows(ArithmeticException.class, () -> calculator.add(a, b));
+    }
+
+    @Test
+    @DisplayName("Test add method for first argument being smaller than 0 and second being integer min value")
+    void testAddForFirstParameterIntegerMinValueAndSecondBeingSmallerThanZero() {
+
+        int a = Integer.MIN_VALUE;
+        int b = -1;
+
+        assertThrows(ArithmeticException.class, () -> calculator.add(a, b));
+    }
 
 }
