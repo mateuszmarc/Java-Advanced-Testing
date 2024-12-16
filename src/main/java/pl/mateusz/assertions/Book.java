@@ -6,6 +6,7 @@ public class Book {
     private String title;
     private String author;
     private int yearOfPublication;
+    private boolean isAvailable;
 
     public Book(String title, String author, Integer yearOfPublication) {
         lastId++;
@@ -13,6 +14,7 @@ public class Book {
         this.title = title;
         this.author = author;
         this.yearOfPublication = yearOfPublication;
+        this.isAvailable = true;
     }
 
     public Long getId() {
@@ -45,6 +47,15 @@ public class Book {
 
     public void setYearOfPublication(int yearOfPublication) {
         this.yearOfPublication = yearOfPublication;
+    }
+
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
+    }
+
+    public boolean isAvailable() {
+        return isAvailable;
     }
 
     @Override
