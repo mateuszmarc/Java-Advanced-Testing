@@ -1,4 +1,4 @@
-package pl.mateusz.marcykiewicz;
+package pl.mateusz.marcykiewicz.testingintroduction;
 
 import java.util.Arrays;
 
