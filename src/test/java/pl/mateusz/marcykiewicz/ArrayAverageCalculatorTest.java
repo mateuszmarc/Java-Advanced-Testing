@@ -30,6 +30,16 @@ public class ArrayAverageCalculatorTest {
     }
 
     @Test
+    @DisplayName("Should throw Exception on null array")
+    public void givenNullArray_whenCalculateAverage_thenThrowIllegalArgumentException() {
+//        given
+        int[] array = null;
+
+//        then
+        assertThrows(IllegalArgumentException.class, () -> arrayAverageCalculator.calculateAverage(array));
+    }
+
+    @Test
     @DisplayName("Should return 0 on array of zeros")
     public void givenArrayOfZeros_whenCalculateAverage_thenReturnZero() {
 //        given

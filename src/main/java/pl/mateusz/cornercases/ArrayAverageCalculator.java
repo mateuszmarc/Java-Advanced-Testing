@@ -3,7 +3,7 @@ package pl.mateusz.cornercases;
 public class ArrayAverageCalculator {
 
     public double calculateAverage(int[] array) {
-        if (array.length == 0) {
+        if (array == null || array.length == 0) {
             throw new IllegalArgumentException("Array is empty. Cannot calculate average");
         }
 
