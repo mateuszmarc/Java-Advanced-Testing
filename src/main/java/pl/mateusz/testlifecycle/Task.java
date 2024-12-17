@@ -1,12 +1,16 @@
 package pl.mateusz.testlifecycle;
 
 public class Task {
-    private static Long taskId = 0L;
+    public static Long taskId = 0L;
     private Long id;
     private String title;
     private String description;
     private Status status = Status.INCOMPLETE;
 
+    public Task() {
+        taskId++;
+        this.id = taskId;
+    }
 
     public Task(String title, String description) {
         taskId++;
@@ -38,7 +42,22 @@ public class Task {
         this.status = status;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public void completeTask() {
         this.status = Status.COMPLETE;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                '}';
     }
 }
