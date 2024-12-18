@@ -7,6 +7,7 @@ import pl.mateusz.assertJ.Status;
 import pl.mateusz.assertJ.Task;
 import pl.mateusz.assertJ.TaskManager;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -238,5 +239,44 @@ public class TaskManagerAssertJTest {
         assertThatThrownBy(() -> taskManager.addTask(title, description))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Title cannot be null");
+    }
+
+    @Test
+    @DisplayName("Test searchTasks")
+    public void givenTaskManager_whenSearchTask_thenReturnTaskList() {
+//        given
+        LocalDate created = taskManager.getTasks().get(1).getCreated();
+
+//        when
+        List<Task> tasks = taskManager.searchTasksByCreationDate(created);
+
+//        then
+        assertThat(tasks).isNotEmpty();
+    }
+
+    @Test
+    @DisplayName("Test searchTasks")
+    public void givenTaskManager_whenSearchTaskForWrongCreationDate_thenReturnEmptyTaskList() {
+//        given
+        LocalDate created = LocalDate.of(2033, 1, 1);
+
+//        when
+        List<Task> tasks = taskManager.searchTasksByCreationDate(created);
+
+//        then
+        assertThat(tasks).isEmpty();
+    }
+
+    @Test
+    @DisplayName("Test searchTasks")
+    public void givenTaskManager_whenSearchTaskForNullCreationDate_thenReturnEmptyTaskList() {
+//        given
+        LocalDate created = null;
+
+//        when
+        List<Task> tasks = taskManager.searchTasksByCreationDate(created);
+
+//        then
+        assertThat(tasks).isEmpty();
     }
 }

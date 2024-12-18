@@ -1,5 +1,6 @@
 package pl.mateusz.assertJ;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -50,4 +51,9 @@ public class TaskManager {
         return tasks.stream().filter(task -> task.getId().equals(id)).findFirst();
     }
 
+    public List<Task> searchTasksByCreationDate(LocalDate creationDate) {
+        return tasks.stream()
+                .filter(task -> task.getCreated().equals(creationDate))
+                .toList();
+    }
 }

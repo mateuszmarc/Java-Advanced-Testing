@@ -1,5 +1,7 @@
 package pl.mateusz.assertJ;
 
+import java.time.LocalDate;
+
 public class Task {
 
     private static Long lastId = 0L;
@@ -7,6 +9,7 @@ public class Task {
     private String title;
     private String description;
     private Status status;
+    private LocalDate created;
 
     public Task(String title, String description) {
         lastId++;
@@ -14,6 +17,7 @@ public class Task {
         this.title = title;
         this.description = description;
         this.status = Status.INCOMPLETE;
+        this.created = LocalDate.now();
     }
 
     public Long getId() {
@@ -42,5 +46,9 @@ public class Task {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public LocalDate getCreated() {
+        return created;
     }
 }
