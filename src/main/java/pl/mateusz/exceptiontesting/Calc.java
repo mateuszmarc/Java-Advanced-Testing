@@ -12,4 +12,12 @@ public class Calc {
         return result;
     }
 
+    public static double calculateSquare(int number) {
+        if (number < 0) {
+            throw new NegativeNumberException(number);
+        }
+        return Math.sqrt(number);
+    }
+
+
 }
