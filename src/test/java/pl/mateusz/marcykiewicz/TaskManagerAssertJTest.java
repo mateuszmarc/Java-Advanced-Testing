@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 
@@ -224,5 +225,18 @@ public class TaskManagerAssertJTest {
 
 //        then
         assertThat(isUpdated).isFalse();
+    }
+
+    @Test
+    @DisplayName("Test addTask when title is null should throw IllegalArgumentException")
+    public void givenTaskManager_whenAddTaskTitleIsNull_thenThrowIllegalArgumentException() {
+//        given
+        String title = null;
+        String description = "Description";
+
+//        when &then
+        assertThatThrownBy(() -> taskManager.addTask(title, description))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Title cannot be null");
     }
 }

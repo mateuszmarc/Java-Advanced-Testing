@@ -21,6 +21,9 @@ public class TaskManager {
     }
 
     public boolean addTask(String title, String description) {
+        if (title == null) {
+            throw  new IllegalArgumentException("Title cannot be null");
+        }
         return tasks.add(new Task(title, description));
     }
 
